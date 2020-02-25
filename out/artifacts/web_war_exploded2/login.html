@@ -1,0 +1,397 @@
+ <html>
+ <head>
+ <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <title>登陆lxpgg</title>
+  <link rel="stylesheet" type="text/css" href="css/style.css"/>
+  <link rel="stylesheet" type="text/css" href="css/body.css"/>
+</head>
+<!-- 这个作用主要是判断登录的时候输入信息起到提示作用 -->
+<script language="javascript">
+    function validateLogin() {
+        var userName = document.getElementById(username).value;
+        var password = document.getElementById(password).value;
+        if ((userName == "") || (userName == "输入您的用户名")) {
+            alert("请输入用户名!");
+            return false;
+        }
+        if ((password == "") || (password == "输入您的密码")) {
+            alert("请输入密码!");
+            return false;
+        }}
+    function openwin() {
+        window.open("register.html", "newwindow", "height=400, width=400, top=300,left=200,toolbar=no,menubar=no, scrollbars=no, resizable=no, location=no, status=no")
+//写成一行 
+//top=0 窗口距离屏幕上方的象素值； 
+//left=0 窗口距离屏幕左侧的象素值；
+    }
+</script>
+ <style>
+ html,body {
+	width: 100%;
+	height: 100%;
+}
+*{margin: 0 auto;
+	padding: 0;}
+#overDiv {  /*打开后的背景*/
+	background-color:#000;
+	width: 100%;
+	height: 100%;
+	left: 0;
+	top: 0; /*FF IE7*/
+	filter: alpha(opacity = 65); /*IE*/
+	opacity: 0.65; /*FF*/
+	z-index: 110;
+	position: fixed !important; /*FF IE7*/
+	position: absolute; /*IE6*/
+	_top: expression(eval(document.compatMode && 
+	 document.compatMode == 'CSS1Compat')? 
+	documentElement.scrollTop+  (document.documentElement.clientHeight-this.offsetHeight
+		)/2: /*IE6*/ 
+	document.body.scrollTop+  (document.body.clientHeight-  this.clientHeight
+		)/2 ); /*IE5 IE5.5*/
+}
+ 
+#hsDiv {  /*打开的窗口*/
+	background:#fff;;
+	
+	z-index: 120;
+	width: 400px;
+	height: 300px;
+	left: 43%; /*FF IE7*/
+	top: 37%; /*FF IE7*/
+	margin-left: -150px !important; /*FF IE7 该值为本身宽的一半 */
+	margin-top: -60px !important; /*FF IE7 该值为本身高的一半*/
+	margin-top: 0px;
+	position: fixed !important; /*FF IE7*/
+	position: absolute; /*IE6*/
+	_top: expression(eval(document.compatMode && 
+	 document.compatMode == 'CSS1Compat')? 
+	documentElement.scrollTop+  (document.documentElement.clientHeight-this.offsetHeight
+		)/2: /*IE6*/ 
+	document.body.scrollTop+  (document.body.clientHeight-  this.clientHeight
+		)/2 ); /*IE5 IE5.5*/
+}
+ 
+.lobu {
+	width: 65px;
+	height: 25px;
+	background: #FFFFFF;
+	font-size: 13px;
+	border: #0099CC solid 1px;
+}
+/*-------登陆表单的设置------------*/
+#closediv{
+	margin-left: 390px;
+	margin-top: -30px;
+}
+#dlTitle{
+	width:400px;
+	height: 30px;
+	
+}
+#logintb{
+	width: 300px;
+	height:auto;
+	border: 0px;
+	margin-top: 5px;
+}
+#logintb .logintd1,#logintb .logintd3
+{
+	height:35px;
+	vertical-align: bottom;
+}
+#logintb .logintd1
+{
+	font-size:12px;
+	color: #888888;
+}
+#logintb .logintd3{
+	font-size:11px;
+}
+#logintb .logintd2
+{
+	height:auto;
+	
+}
+#logintb td a{
+	float: right;
+}
+.logintd2 input{
+	width:300px;
+	height: 32px;
+}
+.logintd4{
+	height: 45px;
+	text-align: center;
+	vertical-align: bottom;
+}
+
+ 
+ </style>
+ </head>
+ <body>
+  <!-- 登陆连接 -->
+    <div><a href="javascript:void(0);" onClick="show()"><button>登录</button></a></div>
+     <!-- 弹出登录表单开始 -->
+    <div id="hsDiv" style="display:none;">
+        <!-- 右上角关闭按钮 -->
+		<div id="closediv">
+			<a href="javascript:void(0);" onClick="closeDiv()"><img src="file:///C|/Users/lenovo/Desktop/web/ftmp_182_lz/images/logingb.png">
+			</a>
+		</div>
+		<!-- 登陆div -->
+		<div id="tbdiv">
+          <div class="#">  <!--container-->
+  <section id="content">
+    <form action="/user" method="post"> <!--CheckLogin.jsp登录判断界面-->
+      <h1>会员登录</h1>
+      <input name="op" value="login" style="display: none"/>
+      <div>
+        <input type="text" placeholder="学号" required="" id="username" name="username" onkeyup="value=value.replace(/[\W]/g,'')"
+               onbeforepaste="clipboardData.setData('text',clipboardData.getData('text').replace(/[^\d]/g,''))"/>
+      </div>
+      <div>
+        <input type="password" placeholder="密码" required="" id="password" name="password"  onkeyup="value=value.replace(/[\W]/g,'')"
+               onbeforepaste="clipboardData.setData('text',clipboardData.getData('text').replace(/[^\d]/g,''))"/>
+      </div>
+      <div class="">
+        <span class="help-block u-errormessage" id="js-server-helpinfo">&nbsp;</span>			</div>
+      <div>
+        <!-- <input type="submit" value="Log in" /> -->
+        <input type="submit" value="登录" class="btn btn-primary" id="js-btn-login"/>
+        <a href="#">忘记密码?</a>
+        <!-- <a href="#">Register</a> -->
+      </div>
+    </form><!-- form -->
+    <div class="button">
+      <span class="help-block u-errormessage" id="span">&nbsp;</span>
+      <a href="#" onclick="openwin()">注册</a>
+    </div> <!-- button -->
+  </section><!-- content -->
+</div>
+		</div>
+	</div>
+	<div id="overDiv" style="display:none;"></div>
+    <script>
+    function show(){
+		document.getElementById("overDiv").style.display = "block" ;
+		document.getElementById("hsDiv").style.display = "block" ;
+	}
+	function closeDiv(){
+		document.getElementById("overDiv").style.display = "none" ;
+		document.getElementById("hsDiv").style.display = "none" ;
+	}
+
+    </script>
+    种类:二手书籍<br>
+     运动器材<br>
+     音乐器材 <br>
+     数码产品<br>
+     杂货<br>
+包送<br>
+不包送<br>
+价格不要高于5000 <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    角色分为角色分为<br>
+1.发布者（发布商品信息和寝室信息等，发布者也可以是购买者）<br>
+2.购买者（浏览商品和购买商品，购买者也可以是发布者）<br>
+3.管理员（进行一些商品的管理等）<br>
+功能<br>
+1.使用学号进行登录<br>
+2.发布商品包含地点，商品信息<br>
+3.购买商品数量为0时，不能购买<br>
+（大致就是这些了，后期慢慢添加功能）<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+    角色分为角色分为<br>
+1.发布者（发布商品信息和寝室信息等，发布者也可以是购买者）<br>
+2.购买者（浏览商品和购买商品，购买者也可以是发布者）<br>
+3.管理员（进行一些商品的管理等）<br>
+功能<br>
+1.使用学号进行登录<br>
+2.发布商品包含地点，商品信息<br>
+3.购买商品数量为0时，不能购买<br>
+（大致就是这些了，后期慢慢添加功能）<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+    角色分为角色分为<br>
+1.发布者（发布商品信息和寝室信息等，发布者也可以是购买者）<br>
+2.购买者（浏览商品和购买商品，购买者也可以是发布者）<br>
+3.管理员（进行一些商品的管理等）<br>
+功能<br>
+1.使用学号进行登录<br>
+2.发布商品包含地点，商品信息<br>
+3.购买商品数量为0时，不能购买<br>
+（大致就是这些了，后期慢慢添加功能）<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+    角色分为角色分为<br>
+1.发布者（发布商品信息和寝室信息等，发布者也可以是购买者）<br>
+2.购买者（浏览商品和购买商品，购买者也可以是发布者）<br>
+3.管理员（进行一些商品的管理等）<br>
+功能<br>
+1.使用学号进行登录<br>
+2.发布商品包含地点，商品信息<br>
+3.购买商品数量为0时，不能购买<br>
+（大致就是这些了，后期慢慢添加功能）<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+    角色分为角色分为<br>
+1.发布者（发布商品信息和寝室信息等，发布者也可以是购买者）<br>
+2.购买者（浏览商品和购买商品，购买者也可以是发布者）<br>
+3.管理员（进行一些商品的管理等）<br>
+功能<br>
+1.使用学号进行登录<br>
+2.发布商品包含地点，商品信息<br>
+3.购买商品数量为0时，不能购买<br>
+（大致就是这些了，后期慢慢添加功能）<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+    角色分为角色分为<br>
+1.发布者（发布商品信息和寝室信息等，发布者也可以是购买者）<br>
+2.购买者（浏览商品和购买商品，购买者也可以是发布者）<br>
+3.管理员（进行一些商品的管理等）<br>
+功能<br>
+1.使用学号进行登录<br>
+2.发布商品包含地点，商品信息<br>
+3.购买商品数量为0时，不能购买<br>
+（大致就是这些了，后期慢慢添加功能）<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+    角色分为角色分为<br>
+1.发布者（发布商品信息和寝室信息等，发布者也可以是购买者）<br>
+2.购买者（浏览商品和购买商品，购买者也可以是发布者）<br>
+3.管理员（进行一些商品的管理等）<br>
+功能<br>
+1.使用学号进行登录<br>
+2.发布商品包含地点，商品信息<br>
+3.购买商品数量为0时，不能购买<br>
+（大致就是这些了，后期慢慢添加功能）<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+    角色分为角色分为<br>
+1.发布者（发布商品信息和寝室信息等，发布者也可以是购买者）<br>
+2.购买者（浏览商品和购买商品，购买者也可以是发布者）<br>
+3.管理员（进行一些商品的管理等）<br>
+功能<br>
+1.使用学号进行登录<br>
+2.发布商品包含地点，商品信息<br>
+3.购买商品数量为0时，不能购买<br>
+（大致就是这些了，后期慢慢添加功能）<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+    角色分为角色分为<br>
+1.发布者（发布商品信息和寝室信息等，发布者也可以是购买者）<br>
+2.购买者（浏览商品和购买商品，购买者也可以是发布者）<br>
+3.管理员（进行一些商品的管理等）<br>
+功能<br>
+1.使用学号进行登录<br>
+2.发布商品包含地点，商品信息<br>
+3.购买商品数量为0时，不能购买<br>
+（大致就是这些了，后期慢慢添加功能）<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+    角色分为角色分为<br>
+1.发布者（发布商品信息和寝室信息等，发布者也可以是购买者）<br>
+2.购买者（浏览商品和购买商品，购买者也可以是发布者）<br>
+3.管理员（进行一些商品的管理等）<br>
+功能<br>
+1.使用学号进行登录<br>
+2.发布商品包含地点，商品信息<br>
+3.购买商品数量为0时，不能购买<br>
+（大致就是这些了，后期慢慢添加功能）<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+    角色分为角色分为<br>
+1.发布者（发布商品信息和寝室信息等，发布者也可以是购买者）<br>
+2.购买者（浏览商品和购买商品，购买者也可以是发布者）<br>
+3.管理员（进行一些商品的管理等）<br>
+功能<br>
+1.使用学号进行登录<br>
+2.发布商品包含地点，商品信息<br>
+3.购买商品数量为0时，不能购买<br>
+（大致就是这些了，后期慢慢添加功能）<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+    角色分为角色分为<br>
+1.发布者（发布商品信息和寝室信息等，发布者也可以是购买者）<br>
+2.购买者（浏览商品和购买商品，购买者也可以是发布者）<br>
+3.管理员（进行一些商品的管理等）<br>
+功能<br>
+1.使用学号进行登录<br>
+2.发布商品包含地点，商品信息<br>
+3.购买商品数量为0时，不能购买<br>
+（大致就是这些了，后期慢慢添加功能）<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+    角色分为角色分为<br>
+1.发布者（发布商品信息和寝室信息等，发布者也可以是购买者）<br>
+2.购买者（浏览商品和购买商品，购买者也可以是发布者）<br>
+3.管理员（进行一些商品的管理等）<br>
+功能<br>
+1.使用学号进行登录<br>
+2.发布商品包含地点，商品信息<br>
+3.购买商品数量为0时，不能购买<br>
+（大致就是这些了，后期慢慢添加功能）<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+    角色分为角色分为<br>
+1.发布者（发布商品信息和寝室信息等，发布者也可以是购买者）<br>
+2.购买者（浏览商品和购买商品，购买者也可以是发布者）<br>
+3.管理员（进行一些商品的管理等）<br>
+功能<br>
+1.使用学号进行登录<br>
+2.发布商品包含地点，商品信息<br>
+3.购买商品数量为0时，不能购买<br>
+（大致就是这些了，后期慢慢添加功能）<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+  
+  </body>
+
+</html>
